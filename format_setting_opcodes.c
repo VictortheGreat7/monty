@@ -21,6 +21,6 @@ void queue_format(stack_t **head, unsigned int line_num)
 {
 	(void)head;
 	(void)line_num;
-	monty_state.lifo_fifo = 0;
+	monty_state.lifo_fifo = 1;
 }
 
