@@ -68,6 +68,7 @@ void mod_second_by_top(stack_t **head, unsigned int line_num);
 void do_nothing(stack_t **head, unsigned int line_num);
 void print_char(stack_t **head, unsigned int line_num);
 void print_string(stack_t **head, unsigned int line_num);
+void top_rotate(stack_t **head, unsigned int line_num);
 void push_node_to_head(stack_t **head, int n);
 void push_node_to_rear(stack_t **head, int n);
 void free_stack(stack_t *head);

@@ -61,3 +61,27 @@ void print_string(stack_t **head, unsigned int line_num)
 	printf("\n");
 }
 
+/**
+* top_rotate - Rotates the stack to the top
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void top_rotate(stack_t **head, unsigned int line_num)
+{
+	stack_t *current_node = *head, *next_node;
+	(void)line_num;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return;
+
+	next_node = (*head)->next;
+	next_node->prev = NULL;
+
+	while (current_node->next != NULL)
+		current_node = current_node->next;
+
+	current_node->next = *head;
+	(*head)->next = NULL;
+	(*head)->prev = current_node;
+	(*head) = next_node;
+}
