@@ -85,3 +85,28 @@ void top_rotate(stack_t **head, unsigned int line_num)
 	(*head)->prev = current_node;
 	(*head) = next_node;
 }
+
+/**
+* bottom_rotate - Rotates the stack to the bottom
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void bottom_rotate(stack_t **head, unsigned int line_num)
+{
+	stack_t *last_node;
+	(void)line_num;
+
+	last_node = *head;
+	if (*head == NULL || (*head)->next == NULL)
+		return;
+
+	while (last_node->next)
+		last_node = last_node->next;
+
+	last_node->next = *head;
+	last_node->prev->next = NULL;
+	last_node->prev = NULL;
+	(*head)->prev = last_node;
+	(*head) = last_node;
+}
+

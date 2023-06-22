@@ -74,6 +74,7 @@ int execute_opcode(char *lc, stack_t **stack, unsigned int line_num, FILE *mf)
 		{"pchar", print_char},
 		{"pstr", print_string},
 		{"rotl", top_rotate},
+		{"rotr", bottom_rotate},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
