@@ -120,7 +120,7 @@ void mul_top_two(stack_t **head, unsigned int line_num)
 		exit(EXIT_FAILURE);
 	}
 	value_store = *head;
-	mul = value_store->next->n * value_store->n;
+	mul = value_store->n * value_store->next->n;
 	value_store->next->n = mul;
 	*head = value_store->next;
 	free(value_store);
