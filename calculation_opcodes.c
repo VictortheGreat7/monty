@@ -70,7 +70,7 @@ void sub_top_from_second(stack_t **head, unsigned int line_num)
 void div_second_by_top(stack_t **head, unsigned int line_num)
 {
 	stack_t *value_store;
-	int stack_size, div;
+	int stack_size = 0, div;
 
 	value_store = *head;
 	for (; value_store != NULL; stack_size++)
@@ -106,7 +106,7 @@ void div_second_by_top(stack_t **head, unsigned int line_num)
 void mul_top_two(stack_t **head, unsigned int line_num)
 {
 	stack_t *value_store;
-	int stack_size, top_element, second_top, mul;
+	int stack_size = 0, top_element, second_top, mul;
 
 	value_store = *head;
 	for (; value_store != NULL; stack_size++)
@@ -125,6 +125,42 @@ void mul_top_two(stack_t **head, unsigned int line_num)
 	mul = second_top * top_element;
 
 	value_store->next->n = mul;
+	*head = value_store->next;
+	free(value_store);
+}
+
+/**
+* mod_second_by_top - Modulus of the second top element by the top element
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void mod_second_by_top(stack_t **head, unsigned int line_num)
+{
+	stack_t *value_store;
+	int stack_size = 0, mod;
+
+	value_store = *head;
+	for (; value_store != NULL; stack_size++)
+		value_store = value_store->next;
+	if (stack_size < 2)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	value_store = *head;
+	if (value_store->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	mod = value_store->next->n % value_store->n;
+	value_store->next->n = mod;
 	*head = value_store->next;
 	free(value_store);
 }
