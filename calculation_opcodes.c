@@ -106,7 +106,7 @@ void div_second_by_top(stack_t **head, unsigned int line_num)
 void mul_top_two(stack_t **head, unsigned int line_num)
 {
 	stack_t *value_store;
-	int stack_size, mul;
+	int stack_size, operand1, operand2, mul;
 
 	value_store = *head;
 	for (; value_store != NULL; stack_size++)
@@ -120,7 +120,10 @@ void mul_top_two(stack_t **head, unsigned int line_num)
 		exit(EXIT_FAILURE);
 	}
 	value_store = *head;
-	mul = value_store->n * value_store->next->n;
+	operand1 = value_store->n;
+	operand2 = value_store->next->n;
+	mul = operand1 * operand2;
+
 	value_store->next->n = mul;
 	*head = value_store->next;
 	free(value_store);
