@@ -63,6 +63,7 @@ int execute_opcode(char *lc, stack_t **stack, unsigned int line_num, FILE *mf)
 		{"push", push_element},
 		{"pall", print_values},
 		{"pint", print_top_value},
+		{"pop", remove_top_value},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;

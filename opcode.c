@@ -76,3 +76,25 @@ void print_top_value(stack_t **head, unsigned int line_num)
 	}
 	printf("%d\n", (*head)->n);
 }
+
+/**
+* remove_top_value - Removes the top element of the stack
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void remove_top_value(stack_t **head, unsigned int line_num)
+{
+	stack_t *current_node;
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	current_node = *head;
+	*head = current_node->next;
+	free(current_node);
+}
