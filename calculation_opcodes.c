@@ -98,3 +98,31 @@ void div_second_by_top(stack_t **head, unsigned int line_num)
 	free(value_store);
 }
 
+/**
+* mul_top_two -  Multiplies the second top element with the top element
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void mul_top_two(stack_t **head, unsigned int line_num)
+{
+	stack_t *value_store;
+	int stack_size, mul;
+
+	value_store = *head;
+	for (; value_store != NULL; stack_size++)
+		value_store = value_store->next;
+	if (stack_size < 2)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	value_store = *head;
+	mul = value_store->next->n * value_store->n;
+	value_store->next->n = mul;
+	*head = value_store->next;
+	free(value_store);
+}
+
