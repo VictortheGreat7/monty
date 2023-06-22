@@ -24,7 +24,8 @@ void add_top_two(stack_t **head, unsigned int line_num)
 	if (stack_size < 2)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_num);
-		fclose(monty_state.monty_file);
+		if (monty_state.monty_file != NULL)
+			fclose(monty_state.monty_file);
 		free(monty_state.line_content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
