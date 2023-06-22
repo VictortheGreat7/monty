@@ -70,6 +70,8 @@ void print_char(stack_t **head, unsigned int line_num);
 void print_string(stack_t **head, unsigned int line_num);
 void top_rotate(stack_t **head, unsigned int line_num);
 void bottom_rotate(stack_t **head, unsigned int line_num);
+void stack_format(stack_t **head, unsigned int line_num);
+void queue_format(stack_t **head, unsigned int line_num);
 void push_node_to_head(stack_t **head, int n);
 void push_node_to_rear(stack_t **head, int n);
 void free_stack(stack_t *head);
