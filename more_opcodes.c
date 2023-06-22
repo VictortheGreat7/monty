@@ -40,3 +40,24 @@ void print_char(stack_t **head, unsigned int line_num)
 	printf("%c\n", current_line->n);
 }
 
+/**
+* print_string - Prints the string starting at the top, followed by a new line
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void print_string(stack_t **head, unsigned int line_num)
+{
+	stack_t *current_line;
+	(void)line_num;
+
+	current_line = *head;
+	while (current_line)
+	{
+		if (current_line->n > 127 || current_line->n <= 0)
+			break;
+		printf("%c", current_line->n);
+		current_line = current_line->next;
+	}
+	printf("\n");
+}
+

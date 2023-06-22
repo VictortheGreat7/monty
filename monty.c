@@ -72,6 +72,7 @@ int execute_opcode(char *lc, stack_t **stack, unsigned int line_num, FILE *mf)
 		{"mod", mod_second_by_top},
 		{"nop", do_nothing},
 		{"pchar", print_char},
+		{"pstr", print_string},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
