@@ -59,6 +59,7 @@ void push_element(stack_t **head, unsigned int line_num);
 void print_values(stack_t **head, unsigned int line_num);
 void print_top_value(stack_t **head, unsigned int line_num);
 void remove_top_value(stack_t **head, unsigned int line_num);
+void swap_top_two(stack_t **head, unsigned int line_num);
 void push_node_to_head(stack_t **head, int n);
 void push_node_to_rear(stack_t **head, int n);
 void free_stack(stack_t *head);

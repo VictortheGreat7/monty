@@ -98,3 +98,35 @@ void remove_top_value(stack_t **head, unsigned int line_num)
 	*head = current_node->next;
 	free(current_node);
 }
+
+/**
+* swap_top_two - Swaps the top two elements of the stack
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void swap_top_two(stack_t **head, unsigned int line_num)
+{
+	stack_t *current_node;
+	int stack_size = 0;
+	int swap_value;
+
+	current_node = *head;
+	while (current_node)
+	{
+		current_node = current_node->next;
+		stack_size++;
+	}
+	if (stack_size < 2)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	current_node = *head;
+	swap_value = current_node->n;
+	current_node->n = current_node->next->n;
+	current_node->next->n = swap_value;
+}
+
