@@ -67,6 +67,7 @@ int execute_opcode(char *lc, stack_t **stack, unsigned int line_num, FILE *mf)
 		{"swap", swap_top_two},
 		{"add", add_top_two},
 		{"sub", sub_top_from_second},
+		{"div", div_second_by_top},
 		{"nop", do_nothing},
 		{NULL, NULL}
 	};

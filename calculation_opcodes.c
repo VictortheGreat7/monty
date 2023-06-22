@@ -62,3 +62,39 @@ void sub_top_from_second(stack_t **head, unsigned int line_num)
 	free(value_store);
 }
 
+/**
+* div_second_by_top - Divides the second top element by the top element
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void div_second_by_top(stack_t **head, unsigned int line_num)
+{
+	stack_t *value_store;
+	int stack_size, div;
+
+	value_store = *head;
+	for (; value_store != NULL; stack_size++)
+		value_store = value_store->next;
+	if (stack_size < 2)
+	{
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	value_store = *head;
+	if (value_store->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	div = value_store->next->n / value_store->n;
+	value_store->next->n = div;
+	*head = value_store->next;
+	free(value_store);
+}
+
