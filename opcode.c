@@ -20,7 +20,7 @@ void push_element(stack_t **head, unsigned int line_num)
 		}
 		if (is_digit == 1)
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			fprintf(stderr, "L%u: usage: push integer\n", line_num);
 			fclose(monty_state.monty_file);
 			free(monty_state.line_content);
 			free_stack(*head);
@@ -29,7 +29,7 @@ void push_element(stack_t **head, unsigned int line_num)
 	}
 	else
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		fprintf(stderr, "L%u: usage: push integer\n", line_num);
 		fclose(monty_state.monty_file);
 		free(monty_state.line_content);
 		free_stack(*head);
@@ -45,7 +45,7 @@ void push_element(stack_t **head, unsigned int line_num)
 /**
 * print_values - Prints all the values on the stack or queue
 * @head: Double pointer to the head/front of the stack or queue
-* @line_num: Line number where the push instruction is met
+* @line_num: Line number
 */
 void print_values(stack_t **head, unsigned int line_num)
 {
@@ -57,4 +57,22 @@ void print_values(stack_t **head, unsigned int line_num)
 		return;
 	for (; current_line != NULL; current_line = current_line->next)
 		printf("%d\n", current_line->n);
+}
+
+/**
+* print_top_value - Prints the value at the top of the stack
+* @head: Double pointer to the head of the stack
+* @line_num: Line number
+*/
+void print_top_value(stack_t **head, unsigned int line_num)
+{
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_num);
+		fclose(monty_state.monty_file);
+		free(monty_state.line_content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*head)->n);
 }

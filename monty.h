@@ -54,11 +54,12 @@ typedef struct monty_state_s
 }  monty_state_t;
 extern monty_state_t monty_state;
 
+int execute_opcode(char *lc, stack_t **stack, unsigned int line_num, FILE *mf);
 void push_element(stack_t **head, unsigned int line_num);
+void print_values(stack_t **head, unsigned int line_num);
+void print_top_value(stack_t **head, unsigned int line_num);
 void push_node_to_head(stack_t **head, int n);
 void push_node_to_rear(stack_t **head, int n);
-void print_values(stack_t **head, unsigned int line_num);
-int execute_opcode(char *lc, stack_t **stack, unsigned int line_num, FILE *mf);
 void free_stack(stack_t *head);
 
 #endif
